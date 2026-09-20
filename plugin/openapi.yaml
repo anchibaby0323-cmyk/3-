@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: MobilePilot 2.0
+  version: 2.0.0-alpha.2
+  description: Send a user-approved phone command to their signed-in Android device.
+servers:
+  - url: https://REPLACE_WITH_YOUR_WORKER.workers.dev
+paths:
+  /v1/commands:
+    post:
+      operationId: executePhoneCommand
+      summary: Execute a command on the signed-in phone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [command]
+              properties:
+                command:
+                  type: string
+                  description: Concise Traditional Chinese instruction for the phone.
+                require_confirmation:
+                  type: boolean
+                  default: false
+      responses:
+        '202':
+          description: Command accepted for delivery
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id: { type: string }
+                  status: { type: string }
+components:
+  securitySchemes:
+    mobilePilotOAuth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://REPLACE_WITH_YOUR_WORKER.workers.dev/oauth/authorize
+          tokenUrl: https://REPLACE_WITH_YOUR_WORKER.workers.dev/oauth/token
+          scopes:
+            phone.control: Execute approved phone commands
+security:
+  - mobilePilotOAuth: [phone.control]
