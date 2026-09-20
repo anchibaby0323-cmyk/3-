@@ -1,0 +1,7 @@
+name = "mobilepilot-2"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+GOOGLE_CLIENT_ID = "CONFIGURE_IN_CLOUDFLARE"
+FIREBASE_PROJECT_ID = "CONFIGURE_IN_CLOUDFLARE"
