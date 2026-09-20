@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MobilePilot 2.0</string>
+    <string name="accessibility_description">依照你確認的指令，讀取畫面元件並執行點擊、滑動與輸入。</string>
+</resources>
