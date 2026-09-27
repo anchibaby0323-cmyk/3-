@@ -66,7 +66,7 @@ public final class MainActivity extends Activity {
         try {
             binding = true;
             Shizuku.UserServiceArgs args = new Shizuku.UserServiceArgs(new ComponentName(this, ProbeService.class))
-                    .daemon(false).tag("battery-readonly").version(1);
+                    .daemon(false).tag("battery-readonly").processNameSuffix("battery").version(2);
             Shizuku.bindUserService(args, connection);
             show("正在連接 Shizuku…\n\n" + basic());
         } catch (Exception e) { binding = false; show("Shizuku 連接失敗：" + e.getClass().getSimpleName() + "\n\n" + basic()); }
